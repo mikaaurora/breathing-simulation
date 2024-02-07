@@ -21,11 +21,18 @@ function startCountdown() {
       ball.innerHTML = countdownValue; // Update countdown value
     } else {
       clearInterval(countdownInterval); // Clear countdown interval
-      ball.innerHTML = 'breathe in'; // Reset ball text
+      ball.innerHTML = 'breathe in'; // Reset ball text to start the sequence
       intervalId = setInterval(moveBall, 1500); // Start the moveBall interval
+
+      var backgroundAudio = document.getElementById('backgroundAudio'); // Get the audio element
+      backgroundAudio.loop = true; // Set the audio to loop
+      backgroundAudio.play().catch(error => {
+        console.log("Audio play failed: " + error); // Log any errors for debugging
+      });
     }
   }, 1000); // Update every second
 }
+
 
 function moveBall() {
   var Xmin = 0;
@@ -58,10 +65,11 @@ function moveBall() {
   }
 }
 
-// Add click event listener to start the countdown and then the moveBall sequence
+
+// Add click event listener to start the countdown when the ball is clicked
 ball.addEventListener('click', function() {
   // Prevent multiple intervals from being set if the ball is clicked more than once
   if (!intervalId) {
-    startCountdown();
+    startCountdown(); // Start the countdown, which will eventually start the audio
   }
 });
