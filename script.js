@@ -39,8 +39,3 @@ function moveBall() {
 }
 
 setInterval(moveBall, 1500);
-
-document.addEventListener('DOMContentLoaded', (event) => {
-  let audioElement = document.querySelector('audio');
-  audioElement.play();
-});
