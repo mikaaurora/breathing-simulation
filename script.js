@@ -39,3 +39,10 @@ function moveBall() {
 }
 
 setInterval(moveBall, 1500);
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  var audioElement = document.querySelector('audio');
+  audioElement.play().catch(error => {
+    console.log("Audio play failed due to autoplay restrictions. User interaction required.");
+  });
+});
