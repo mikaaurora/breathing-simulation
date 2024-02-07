@@ -6,6 +6,26 @@ var lineHeight = 80;
 var fontSize = 12; // Initial font size for "breathe in" text
 var reverse = false;
 var ball = document.getElementById('ball');
+var intervalId; // To store the interval ID
+
+// Set initial text for the ball
+ball.innerHTML = 'Click to begin.';
+
+function startCountdown() {
+  var countdownValue = 3; // Start countdown from 3
+  ball.innerHTML = countdownValue; // Show initial countdown value
+
+  var countdownInterval = setInterval(function() {
+    countdownValue--;
+    if (countdownValue > 0) {
+      ball.innerHTML = countdownValue; // Update countdown value
+    } else {
+      clearInterval(countdownInterval); // Clear countdown interval
+      ball.innerHTML = 'breathe in'; // Reset ball text
+      intervalId = setInterval(moveBall, 1500); // Start the moveBall interval
+    }
+  }, 1000); // Update every second
+}
 
 function moveBall() {
   var Xmin = 0;
@@ -38,4 +58,10 @@ function moveBall() {
   }
 }
 
-setInterval(moveBall, 1500);
+// Add click event listener to start the countdown and then the moveBall sequence
+ball.addEventListener('click', function() {
+  // Prevent multiple intervals from being set if the ball is clicked more than once
+  if (!intervalId) {
+    startCountdown();
+  }
+});
