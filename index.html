@@ -1,117 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Let's Breathe</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Raleway:ital,wght@1,100&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body
-    style="
-      text-align: center;
-      background: rgb(192, 252, 218);
-      height: 90vh;
-      margin: 0 auto;
-      align-items: center;
-    "
-  >
-    <h1
-      style="
-        padding-top: 60px;
-        font-family: 'Raleway', sans-serif;
-        font-size: 50px;
-      "
-    >
-      LET'S BREATHE
-    </h1>
-
-    <audio controls>
-      <source src="scott-buckley-jul.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
-
-    <div style="display: table; width: 100%; height: 400px">
-      <div
-        style="
-          display: table-cell;
-          width: 400px;
-          height: 400px;
-          vertical-align: middle;
-          text-align: center;
-          align-items: center;
-        "
-      >
-        <div
-          id="ball"
-          style="
-            display: inline-block;
-            height: 80px;
-            width: 80px;
-            background: rgb(168, 215, 180);
-            border-radius: 50%;
-            position: relative;
-            line-height: 80px;
-            left: 0px;
-            margin-right: 400px;
-            font-family: 'Merriweather', serif;
-            font-size: 12px;
-          "
-        >
-          breathe in
-        </div>
-      </div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Let's Breathe</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Raleway:ital,wght@1,100&display=swap" rel="stylesheet">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <h1>LET'S BREATHE</h1>
+  <audio controls>
+    <source src="scott-buckley-jul.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div class="container">
+    <div class="ball-container">
+      <div id="ball">breathe in</div>
     </div>
-
-    <script>
-      var positionX = 0
-      var positionY = 0
-      var velocity = 100
-      var height = 80
-      var width = 80
-      var lineHeight = 80
-      var reverse = false
-      var ball = document.getElementById('ball')
-
-      //write a function that can change the position of the html element "ball"
-      function moveBall() {
-        // two x-axis coordinates
-        var Xmin = 0
-        var Xmax = 300
-
-        // update position
-        if (reverse) {
-          positionX = positionX - velocity
-          height /= 1.25
-          width /= 1.25
-          lineHeight /= 1.25
-          ball.style.left = positionX + 'px'
-          ball.style.height = height + 'px'
-          ball.style.width = width + 'px'
-          ball.style.lineHeight = lineHeight + 'px'
-          ball.innerHTML = 'breathe out'
-        } else {
-          positionX = positionX + velocity
-          height *= 1.25
-          width *= 1.25
-          lineHeight *= 1.25
-          ball.style.left = positionX + 'px'
-          ball.style.height = height + 'px'
-          ball.style.width = width + 'px'
-          ball.style.lineHeight = lineHeight + 'px'
-          ball.innerHTML = 'breathe in'
-        }
-
-        if (positionX > Xmax || positionX === Xmin) {
-          reverse = !reverse
-        }
-      }
-      setInterval(moveBall, 1500)
-    </script>
-  </body>
+  </div>
+</body>
 </html>
